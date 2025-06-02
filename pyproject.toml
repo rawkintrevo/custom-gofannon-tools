@@ -1,7 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
-backend-path = "." # Specifies that the build backend is in the project root
 
 [project]
 name = "custom-gofannon"
