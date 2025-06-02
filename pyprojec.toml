@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+backend-path = "." # Specifies that the build backend is in the project root
+
+[project]
+name = "custom-gofannon"
+version = "0.1.0"
+description = "A tool for downloading a PDF from a URL and extracting its text content."
+readme = "README.md"  # Assumes you have or will create a README.md
+requires-python = ">=3.8" # Based on common library compatibility (pdfplumber, requests)
+license = { text = "MIT" } # Or choose another license, e.g., { file = "LICENSE.txt" }
+authors = [
+    { name = "Your Name / Organization", email = "your.email@example.com" } # Replace with actual details
+]
+classifiers = [
+    "Development Status :: 4 - Beta", # Or another appropriate status
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License", # Ensure this matches the license field
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Topic :: Text Processing",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+dependencies = [
+    "requests>=2.25.0",         # For HTTP requests
+    "pdfplumber>=0.7.0",        # For PDF parsing, includes pdfminer.six as a sub-dependency
+    "pdfminer.six>=20221105",    # Explicitly for PDFSyntaxError, and good to manage directly
+    "gofannon"                # Uncomment and specify version if 'gofannon.base.BaseTool' is an external dependency
+]
+
+[project.urls]
+# Homepage = "https://yourprojecthomepage.com"
+# Repository = "https://github.com/yourusername/custom-gofannon"
+# Documentation = "https://yourprojectdocs.com"
+
+# This section helps setuptools find your package(s) automatically.
+[tool.setuptools.packages.find]
+where = ["."]  # Search for packages in the current directory (project root)
+include = ["custom_gofannon*"]  # Include the 'custom_gofannon' package and any subpackages
+# exclude = [] # List any packages to exclude if necessary
+
+# If you plan to have console scripts:
+# [project.scripts]
+# read-pdf-cli = "custom_gofannon.get_pdf_text_from_url:main_cli_function" # Example, if you create such a function
