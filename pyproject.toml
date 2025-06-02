@@ -43,7 +43,6 @@ dependencies = [
 
 # This section helps setuptools find your package(s) automatically.
 [tool.setuptools.packages.find]
-where = ["."]  # Search for packages in the current directory (project root)
 include = ["custom_gofannon*"]  # Include the 'custom_gofannon' package and any subpackages
 # exclude = [] # List any packages to exclude if necessary
 
