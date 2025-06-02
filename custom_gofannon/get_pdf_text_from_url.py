@@ -1,9 +1,13 @@
 # gofannon/pdf_reader/read_pdf_from_url.py
 from gofannon.base import BaseTool
+
+import logging
 import requests
 import io # For in-memory buffer
 import pdfplumber
 from pdfminer.pdfparser import PDFSyntaxError # For handling PDF parsing errors
+
+logger = logging.getLogger(__name__)
 
 class ReadPdfFromUrl(BaseTool):
     """
@@ -53,7 +57,7 @@ class ReadPdfFromUrl(BaseTool):
             # Check content type (optional but good practice)
             content_type = response.headers.get('Content-Type', '').lower()
             if 'application/pdf' not in content_type:
-                logger.warn(
+                logger.warning(
                     f"Content-Type for URL {pdf_url} is '{content_type}', not 'application/pdf'. "
                     "Attempting to parse as PDF anyway."
                 )
@@ -64,7 +68,7 @@ class ReadPdfFromUrl(BaseTool):
             text_content = []
             with pdfplumber.open(pdf_buffer) as pdf:
                 if not pdf.pages:
-                    logger.warn(f"PDF from URL {pdf_url} has no pages.")
+                    logger.warning(f"PDF from URL {pdf_url} has no pages.")
                     return f"Error: The PDF from URL '{pdf_url}' contains no pages."
 
                 for page_num, page in enumerate(pdf.pages):
@@ -75,7 +79,7 @@ class ReadPdfFromUrl(BaseTool):
                         logger.debug(f"No text extracted from page {page_num + 1} of PDF from URL {pdf_url}")
 
             if not text_content:
-                logger.warn(f"No text could be extracted from the PDF at URL: {pdf_url}")
+                logger.warning(f"No text could be extracted from the PDF at URL: {pdf_url}")
                 return "No text content could be extracted from this PDF."
 
             logger.info(f"Successfully extracted text from PDF at URL: {pdf_url}")
