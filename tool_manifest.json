@@ -1,0 +1,11 @@
+{
+  "tools": [
+    {
+      "id": "pdf_url_extractor",
+      "name": "Extract PDF Contents",
+      "description": "Takes URL of PDF, returns the contents as simple text.",
+      "module_path": "custom_gofannon.get_pdf_text_from_url",
+      "class_name": "ReadPdfFromUrl"
+    }
+  ]
+}
