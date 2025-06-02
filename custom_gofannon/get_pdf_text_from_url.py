@@ -1,13 +1,9 @@
 # gofannon/pdf_reader/read_pdf_from_url.py
 from gofannon.base import BaseTool
-
-import logging
 import requests
 import io # For in-memory buffer
 import pdfplumber
 from pdfminer.pdfparser import PDFSyntaxError # For handling PDF parsing errors
-
-logger = logging.getLogger(__name__)
 
 class ReadPdfFromUrl(BaseTool):
     """
