@@ -6,6 +6,13 @@
       "description": "Takes URL of PDF, returns the contents as simple text.",
       "module_path": "custom_gofannon.get_pdf_text_from_url",
       "class_name": "ReadPdfFromUrl"
+    },
+    {
+      "id": "dummy_tool",
+      "name": "Dummy Tool",
+      "description": "Takes URL of PDF, returns the contents as simple text.",
+      "module_path": "custom_gofannon.get_pdf_text_from_url",
+      "class_name": "ReadPdfFromUrl"
     }
   ]
 }
